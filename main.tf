@@ -96,21 +96,21 @@ resource "aws_route_table_association" "terraform_RT" {
 
   
 # Create an ec2_instance
-#resource "aws_instance" "terraform_ec2" {
-#  ami = data.aws_ami.web.id
-  #ami = "ami-0ba62214afa52bec7" 
-  #instance_type = var.instancetype
-  #key_name    = var.key_name
-  #monitoring  = false
-  #vpc_security_group_ids = [aws_security_group.terraform_sg.id]
-  #subnet_id        = aws_subnet.public_subnet.id
-  #associate_public_ip_address = true
-  #depends_on      = [aws_internet_gateway.gw]
+resource "aws_instance" "terraform_ec2" {
+  #ami = data.aws_ami.web.id
+  ami = "ami-0ba62214afa52bec7" 
+  instance_type = var.instancetype
+  key_name    = var.key_name
+  monitoring  = false
+  vpc_security_group_ids = [aws_security_group.terraform_sg.id]
+  subnet_id        = aws_subnet.public_subnet.id
+  associate_public_ip_address = true
+  depends_on      = [aws_internet_gateway.gw]
 
- # tags = {
-#    Name = "Terraform_Ec2"
-# }
-#}
+  tags = {
+    Name = "Terraform_Ec2"
+ }
+}
 
 #data "aws_ami" "web" {
 #    most_recent = true
@@ -122,9 +122,9 @@ resource "aws_route_table_association" "terraform_RT" {
 #    }
 #}
 
-#output "instance_ips" {
-#  value = aws_instance.terraform_ec2.public_ip
-#}
+output "instance_ips" {
+  value = aws_instance.terraform_ec2.public_ip
+}
 
 
 
