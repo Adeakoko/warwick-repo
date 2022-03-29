@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    tools {
+        terraform 'Terraform'
+    }
+    stages {
+        stage ('Git checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'Project1A-new', url: 'https://github.com/Adeakoko/warwick-repo.git'
+            }
+        }       
+    
+        stage ('Terraform init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage ('Terraform destroy --auto-approve') {
+            steps {
+                sh 'terraform apply --auto-approve'
+            }
+        }
+        
+    }
+}
