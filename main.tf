@@ -141,6 +141,34 @@ resource "aws_cloudwatch_metric_alarm" "foobar" {
 }
 
 
+resource "aws_cloudwatch_metric_alarm" "foobar1" {
+  alarm_name                = "terraform-test-foobar6"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "Harddisk"
+  namespace                 = "Terraform_Ec2"
+  period                    = "60"
+  statistic                 = "Average"
+  threshold                 = "70"
+  alarm_description         = "This metric monitors ec2 Hard disk"
+  insufficient_data_actions = []
+}
+
+resource "aws_cloudwatch_metric_alarm" "foobar2" {
+  alarm_name                = "terraform-test-foobar7"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "Memory I/O Ops"
+  namespace                 = "Terraform_Ec2"
+  period                    = "60"
+  statistic                 = "Average"
+  threshold                 = "70"
+  alarm_description         = "This metric monitors ec2 Memory I/O Ops"
+  insufficient_data_actions = []
+}
+
+
+
 
 
  
