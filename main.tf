@@ -127,6 +127,20 @@ output "instance_ips" {
 }
 
 
+resource "aws_cloudwatch_metric_alarm" "foobar" {
+  alarm_name                = "terraform-test-foobar5"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "2"
+  metric_name               = "CPUUtilization"
+  namespace                 = "Terraform_Ec2"
+  period                    = "60"
+  statistic                 = "Average"
+  threshold                 = "70"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  insufficient_data_actions = []
+}
+
+
 
 
  
